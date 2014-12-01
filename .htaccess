@@ -1,3 +1,2 @@
-RewriteEngine on
-RewriteRule ^(.*)$
-classes/Resolver.php?path=$1&%{QUERY_STRING}
+#RewriteEngine on
+#RewriteRule ^(.*)$ classes/Resolver.php?path=$1&%{QUERY_STRING}
