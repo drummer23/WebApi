@@ -9,7 +9,7 @@
 require_once('classes/API.php');
 require_once('classes/HTML.php');
 require_once('classes/Request.php');
-require_once('classes/Resolver.php');
+//require_once('classes/Resolver.php');
 require_once('classes/RESTAPI.php');
 
 
