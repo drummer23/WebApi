@@ -60,7 +60,7 @@ class Request {
 		$ch = curl_init();
 
 		//URL für den Aufruf setzen
-		curl_setopt($ch, CURLOPT_URL, 'WebAPI/Api/'.$this->api.'/'.$this->path);
+		curl_setopt($ch, CURLOPT_URL, PROJECT_HTTP_ROOT . '/Api/'.$this->api.'/'.$this->path);
 
 		//Soll der HTTP-Header angezeigt werden?
 		if($this->showHeader != '') curl_setopt($ch, CURLOPT_HEADER, 1);

@@ -9,6 +9,8 @@
 use WebApi\HTML;
 use WebApi\Request;
 
+require('common.php');
+
 function __autoload($class) {
     include 'classes/' . $class . '.php';
 }
