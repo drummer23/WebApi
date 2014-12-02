@@ -42,7 +42,7 @@ class RESTAPI
             //Ressourcenname
             $this->resource = $data[0].'/'.$id;
             //Dateiname festlegen
-            $this->filename = 'files/'.$data[0].'/'.$id;
+            $this->filename = PROJECT_DOCUMENT_ROOT . '/API/files/'.$data[0].'/'.$id;
         }
         else
         {
@@ -50,7 +50,7 @@ class RESTAPI
             //einer neuen Ressource ist erlaubt
             $this->resource = $data[0];
             //Filename verweist auf ein Verzeichnis
-            $this->filename = 'files/'.$data[0];
+            $this->filename = PROJECT_DOCUMENT_ROOT . '/API/files/'.$data[0];
         }
     }
 

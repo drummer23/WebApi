@@ -8,6 +8,8 @@
 
 namespace WebApi;
 
+require ('../../common.php');
+
 require_once('API.php');
 require_once('RESTAPI.php');
 
