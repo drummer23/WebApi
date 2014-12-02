@@ -6,19 +6,32 @@
  * Time: 16:18
  */
 
-require_once('classes/API.php');
-require_once('classes/HTML.php');
-require_once('classes/Request.php');
-//require_once('classes/Resolver.php');
-require_once('classes/RESTAPI.php');
 
+use WebApi\HTML;
+
+
+//require_once('classes/API.php');
+//require_once('classes/HTML.php');
+//require_once('classes/Request.php');
+//require_once('classes/Resolver.php');
+//require_once('classes/RESTAPI.php');
+
+//function my_autoloader($class) {
+//    include 'classes/' . $class . '.php';
+//}
+
+function __autoload($class) {
+    include 'classes/' . $class . '.php';
+}
+
+//spl_autoload_register('my_autoloader');
 
 //Kopf erstellen
-WebApi\HTML::printHead();
+HTML::printHead();
 //Body erstellen
-WebApi\HTML::printBody();
+HTML::printBody();
 //Überschrift erstellen
-WebApi\HTML::printHeadline("WebApi");
+HTML::printHeadline("WebApi");
 
 //Neues Request Objekt
 $req = new WebAPI\Request();
@@ -34,4 +47,4 @@ echo '<div style="border:1px solid gray;">';
 $req->startRequest();
 echo '</div>';
 
-WebApi\HTML::printFoot();
+HTML::printFoot();

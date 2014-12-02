@@ -32,10 +32,10 @@ class Request {
 		echo '<form method="post">';
 		echo 'API:<select name="api">';
 
+        $selected = ($this->api == 'REST') ? 'selected' : '';
+        echo '<option '.$selected.' value="REST">REST</option>';
 		$selected = ($this->api == 'JSON') ? 'selected' : '';
 		echo '<option '.$selected.' value="JSON">JSON</option>';
-		$selected = ($this->api == 'REST') ? 'selected' : '';
-		echo '<option '.$selected.' value="REST">REST</option>';
 		echo '</select>';
 
 		echo 'PATH:<input type="input" name="path" value="'. htmlentities($this->path,ENT_QUOTES,"UTF-8").'"/>';
