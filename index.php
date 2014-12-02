@@ -6,25 +6,13 @@
  * Time: 16:18
  */
 
-
 use WebApi\HTML;
-
-
-//require_once('classes/API.php');
-//require_once('classes/HTML.php');
-//require_once('classes/Request.php');
-//require_once('classes/Resolver.php');
-//require_once('classes/RESTAPI.php');
-
-//function my_autoloader($class) {
-//    include 'classes/' . $class . '.php';
-//}
+use WebApi\Request;
 
 function __autoload($class) {
     include 'classes/' . $class . '.php';
 }
 
-//spl_autoload_register('my_autoloader');
 
 //Kopf erstellen
 HTML::printHead();
@@ -34,7 +22,7 @@ HTML::printBody();
 HTML::printHeadline("WebApi");
 
 //Neues Request Objekt
-$req = new WebAPI\Request();
+$req = new Request();
 
 //Formlar anzeigen
 $req->displayForm();

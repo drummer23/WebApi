@@ -18,7 +18,7 @@ class RESTAPI
     private $filename;
     private $fileHandle;
 
-    private function __construct($data)
+    public function __construct($data)
     {
         //Original-Pfad (nur für Debug-Zwecke)
         $this->path = implode('/',$data);

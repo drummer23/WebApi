@@ -8,6 +8,9 @@
 
 namespace WebApi;
 
+require_once('API.php');
+require_once('RESTAPI.php');
+
 
 class Resolver {
 
@@ -46,7 +49,7 @@ class Resolver {
 			die('Keine API namens <em>' . $data[0] . '</em> vorhanden!');
 
 		//API-Objekt festlegen:
-		$api = '\WebAPI\\' . $data[0] . 'API';
+		$api = '\WebApi\\' . $data[0] . 'API';
 
 		//API-Objekt erstellen
 		$this->APIObj = new $api($data);
