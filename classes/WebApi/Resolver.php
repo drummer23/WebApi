@@ -8,59 +8,68 @@
 
 namespace WebApi;
 
-require ('../../common.php');
+require('../../common.php');
 
 require_once('API.php');
 require_once('RESTAPI.php');
 
 
-class Resolver {
+class Resolver
+{
 
 
-	private $HTTPMethod;
-	private $apiClasses = array('REST');
-	private $APIObj;
+    private $HTTPMethod;
+    private $apiClasses = array('REST');
+    private $APIObj;
 
-	public function __construct()
-	{
-		//Die Anfrage-Methode aus der Server-Variable erfahren
-		$this->HTTPMethod = $_SERVER['REQUEST_METHOD'];
-		//Auflösen des Pfades (und Instantiieren des API-Objektes)
-		$this->pathResolver();
-		//Die jeweilige Behandlung auswählen:
-		switch($this->HTTPMethod)
-		{
-			case 'GET': $this->APIObj->isGET();break;
-			case 'POST': $this->APIObj->isPOST();break;
-			case 'PUT': $this->APIObj->isPUT();break;
-			case 'DELETE': $this->APIObj->isDELETE();break;
-			default: $this->error();
-		}
-	}
+    public function __construct()
+    {
+        //Die Anfrage-Methode aus der Server-Variable erfahren
+        $this->HTTPMethod = $_SERVER['REQUEST_METHOD'];
+        //Auflösen des Pfades (und Instantiieren des API-Objektes)
+        $this->pathResolver();
+        //Die jeweilige Behandlung auswählen:
+        switch ($this->HTTPMethod) {
+            case 'GET':
+                $this->APIObj->isGET();
+                break;
+            case 'POST':
+                $this->APIObj->isPOST();
+                break;
+            case 'PUT':
+                $this->APIObj->isPUT();
+                break;
+            case 'DELETE':
+                $this->APIObj->isDELETE();
+                break;
+            default:
+                $this->error();
+        }
+    }
 
-	private function pathResolver()
-	{
-		//Wenn keine API angegeben wurde.
-		if ($_GET['path'] == "") die('Keine API angegeben.');
+    private function pathResolver()
+    {
+        //Wenn keine API angegeben wurde.
+        if ($_GET['path'] == "") die('Keine API angegeben.');
 
-		//Der erste Parameter ist der Pfad (aufsplittet am Slash)
-		$data = explode('/', $_GET['path']);
+        //Der erste Parameter ist der Pfad (aufsplittet am Slash)
+        $data = explode('/', $_GET['path']);
 
-		//Ist eine Klasse für die Behandlung vorgesehen?
-		if (!in_array($data[0], $this->apiClasses))
-			die('Keine API namens <em>' . $data[0] . '</em> vorhanden!');
+        //Ist eine Klasse für die Behandlung vorgesehen?
+        if (!in_array($data[0], $this->apiClasses))
+            die('Keine API namens <em>' . $data[0] . '</em> vorhanden!');
 
-		//API-Objekt festlegen:
-		$api = '\WebApi\\' . $data[0] . 'API';
+        //API-Objekt festlegen:
+        $api = '\WebApi\\' . $data[0] . 'API';
 
-		//API-Objekt erstellen
-		$this->APIObj = new $api($data);
-	}
+        //API-Objekt erstellen
+        $this->APIObj = new $api($data);
+    }
 
-	private function error()
-	{
-		echo 'Die HTTP-Methode '.$this->HTTPMethod.'wird nicht unterstützt';
-	}
+    private function error()
+    {
+        echo 'Die HTTP-Methode ' . $this->HTTPMethod . 'wird nicht unterstützt';
+    }
 
 }
 
